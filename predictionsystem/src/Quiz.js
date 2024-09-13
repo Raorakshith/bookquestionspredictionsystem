@@ -157,6 +157,7 @@ import {
   Divider,
 } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
+import FaceRecognition from "./components/FaceRecognition";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -251,34 +252,33 @@ const Quiz = () => {
 
   if (loading) {
     return (
-        <Box
+      <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
-          backgroundColor: "#f5f5f5",  // Add a soft background color for better contrast
+          backgroundColor: "#f5f5f5", // Add a soft background color for better contrast
         }}
       >
-        <CircularProgress 
-          size={60} 
-          thickness={5} 
-          sx={{ color: "#1976d2", marginBottom: 2 }}  // Slightly larger spinner with primary color
+        <CircularProgress
+          size={60}
+          thickness={5}
+          sx={{ color: "#1976d2", marginBottom: 2 }} // Slightly larger spinner with primary color
         />
-        <Typography 
-          variant="h6" 
-          sx={{ 
-            fontWeight: 'bold', 
-            color: "#555", 
-            animation: "fadeIn 1.5s ease-in-out infinite",  // Fading effect
-            marginTop: 2 
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: "bold",
+            color: "#555",
+            animation: "fadeIn 1.5s ease-in-out infinite", // Fading effect
+            marginTop: 2,
           }}
         >
           Generating Questions...
         </Typography>
       </Box>
-      
     );
   }
 
@@ -298,6 +298,20 @@ const Quiz = () => {
           questions. Select the most appropriate answer for each question.
         </Typography>
         <Divider sx={{ marginBottom: 3 }} />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: 80,
+            height: 80,
+            position:'absolute',
+            right:8,
+            top:5
+          }}
+        >
+          <FaceRecognition />
+        </div>
         {questions.map((question, index) => (
           <Card key={index} variant="outlined" sx={{ marginBottom: 3 }}>
             <CardContent>

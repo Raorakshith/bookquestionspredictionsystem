@@ -7,10 +7,12 @@ import Results from "./Results";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import { GlobalProvider } from "./components/GlobalState";
 
 const App = () => {
   return (
     <Router>
+    <GlobalProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -18,6 +20,7 @@ const App = () => {
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/results" element={<Results />} />
       </Routes>
+      </GlobalProvider>
     </Router>
   );
 };
