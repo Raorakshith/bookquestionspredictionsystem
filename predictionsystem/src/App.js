@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import { GlobalProvider } from "./components/GlobalState";
+import MyPDFs from "./components/MyPdfs";
 
 const App = () => {
   return (
@@ -19,6 +20,8 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/results" element={<Results />} />
+        <Route path="/my-pdfs" element={<MyPDFs />} />
+
       </Routes>
       </GlobalProvider>
     </Router>
