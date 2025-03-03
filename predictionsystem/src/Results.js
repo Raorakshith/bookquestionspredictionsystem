@@ -157,7 +157,7 @@
 //               }}
 //               avgTypingDelay={20}
 //               startDelay={300}
-              
+
 //             > */}
 //             <Typography variant="body1" sx={{ marginTop: 2 }}>
 //               {feedback}
@@ -347,7 +347,8 @@ const Results = () => {
   const [prediction, setPrediction] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [pastdata, setPastData] = useState("");
-  const [currentQuestionForPrediction, setCurrentQuestionForPrediction] = useState(null);
+  const [currentQuestionForPrediction, setCurrentQuestionForPrediction] =
+    useState(null);
   const [scrollToTop, setScrollToTop] = useState(false);
   const theme = useTheme();
 
@@ -495,27 +496,31 @@ const Results = () => {
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Paper 
-        elevation={4} 
-        sx={{ 
+      <Paper
+        elevation={4}
+        sx={{
           borderRadius: 3,
           overflow: "hidden",
-          backgroundImage: "linear-gradient(to right, rgba(255,255,255,0.95), rgba(255,255,255,0.98))",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.12)"
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.95), rgba(255,255,255,0.98))",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
         }}
       >
         {/* Score Header with Animation */}
-        <Box 
-          sx={{ 
-            p: 5, 
+        <Box
+          sx={{
+            p: 5,
             textAlign: "center",
-            backgroundImage: `linear-gradient(135deg, ${alpha(theme.palette.primary.light, 0.4)} 0%, ${alpha(theme.palette.primary.main, 0.8)} 100%)`,
+            backgroundImage: `linear-gradient(135deg, ${alpha(
+              theme.palette.primary.light,
+              0.4
+            )} 0%, ${alpha(theme.palette.primary.main, 0.8)} 100%)`,
             position: "relative",
             overflow: "hidden",
-            color: "white"
+            color: "white",
           }}
         >
-          <Box 
+          <Box
             className="score-glow"
             sx={{
               position: "absolute",
@@ -530,124 +535,149 @@ const Results = () => {
               animation: "pulse 3s infinite",
             }}
           />
-          
+
           <Typography variant="h6" sx={{ mb: 1, fontWeight: 500 }}>
             Your Quiz Results
           </Typography>
-          
-          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mb: 3 }}>
-            <Avatar 
-              sx={{ 
-                width: 120, 
-                height: 120, 
-                backgroundColor: "white", 
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              mb: 3,
+            }}
+          >
+            <Avatar
+              sx={{
+                width: 120,
+                height: 120,
+                backgroundColor: "white",
                 color: performanceLevel.color,
                 fontSize: "2.5rem",
                 fontWeight: "bold",
-                boxShadow: "0 8px 16px rgba(0,0,0,0.2)"
+                boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
               }}
             >
               {percentage}%
             </Avatar>
           </Box>
-          
+
           <Typography variant="h4" sx={{ fontWeight: "bold" }}>
             {performanceLevel.text}
           </Typography>
-          
+
           <Typography variant="h6" sx={{ fontWeight: 500, mt: 1 }}>
             {score} out of {questions.length} correct
           </Typography>
-          
-          <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mt: 3 }}>
-            <Chip 
+
+          <Box
+            sx={{ display: "flex", justifyContent: "center", gap: 2, mt: 3 }}
+          >
+            <Chip
               icon={<CheckCircleIcon />}
               label={`${stats.correct} Correct`}
-              sx={{ 
-                bgcolor: alpha("#4caf50", 0.9), 
+              sx={{
+                bgcolor: alpha("#4caf50", 0.9),
                 color: "white",
                 fontWeight: "bold",
-                px: 1
+                px: 1,
               }}
             />
-            <Chip 
+            <Chip
               icon={<CancelIcon />}
               label={`${stats.wrong} Wrong`}
-              sx={{ 
-                bgcolor: alpha("#f44336", 0.9), 
+              sx={{
+                bgcolor: alpha("#f44336", 0.9),
                 color: "white",
                 fontWeight: "bold",
-                px: 1
+                px: 1,
               }}
             />
-            <Chip 
+            <Chip
               icon={<HelpOutlineIcon />}
               label={`${stats.skipped} Skipped`}
-              sx={{ 
-                bgcolor: alpha("#ff9800", 0.9), 
+              sx={{
+                bgcolor: alpha("#ff9800", 0.9),
                 color: "white",
                 fontWeight: "bold",
-                px: 1
+                px: 1,
               }}
             />
           </Box>
         </Box>
 
         {/* Performance Feedback Section */}
-        <Box 
-          sx={{ 
+        <Box
+          sx={{
             p: { xs: 2, md: 4 },
-            mb: 4
+            mb: 4,
           }}
         >
-          <Box 
-            sx={{ 
-              display: "flex", 
+          <Box
+            sx={{
+              display: "flex",
               alignItems: "center",
-              mb: 2
+              mb: 2,
             }}
           >
-            <EmojiEventsIcon sx={{ fontSize: 28, color: theme.palette.primary.main, mr: 1.5 }} />
-            <Typography variant="h5" sx={{ fontWeight: "600", color: theme.palette.primary.main }}>
+            <EmojiEventsIcon
+              sx={{ fontSize: 28, color: theme.palette.primary.main, mr: 1.5 }}
+            />
+            <Typography
+              variant="h5"
+              sx={{ fontWeight: "600", color: theme.palette.primary.main }}
+            >
               Performance Analysis
             </Typography>
           </Box>
-          
+
           {loadingFeedback ? (
             <Box sx={{ py: 4, textAlign: "center" }}>
               <CircularProgress size={60} thickness={5} />
-              <Typography sx={{ mt: 2, color: "text.secondary" }}>Analyzing your performance...</Typography>
+              <Typography sx={{ mt: 2, color: "text.secondary" }}>
+                Analyzing your performance...
+              </Typography>
             </Box>
           ) : (
-            <Card 
-              elevation={2} 
-              sx={{ 
+            <Card
+              elevation={2}
+              sx={{
                 p: 3,
                 borderRadius: 2,
-                backgroundImage: `linear-gradient(135deg, ${alpha(theme.palette.background.paper, 0.8)} 0%, ${alpha(theme.palette.background.paper, 0.95)} 100%)`,
+                backgroundImage: `linear-gradient(135deg, ${alpha(
+                  theme.palette.background.paper,
+                  0.8
+                )} 0%, ${alpha(theme.palette.background.paper, 0.95)} 100%)`,
                 border: `1px solid ${alpha(theme.palette.primary.main, 0.2)}`,
-                boxShadow: `0 4px 20px ${alpha(theme.palette.primary.main, 0.15)}`
+                boxShadow: `0 4px 20px ${alpha(
+                  theme.palette.primary.main,
+                  0.15
+                )}`,
               }}
             >
-              <Box 
-                sx={{ 
-                  display: "flex", 
+              <Box
+                sx={{
+                  display: "flex",
                   alignItems: "center",
-                  mb: 2
+                  mb: 2,
                 }}
               >
                 <LightbulbIcon sx={{ color: "orange", mr: 1 }} />
-                <Typography variant="subtitle1" sx={{ fontWeight: "bold", color: "text.primary" }}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{ fontWeight: "bold", color: "text.primary" }}
+                >
                   Personalized Insights
                 </Typography>
               </Box>
-              
-              <Typography 
-                variant="body1" 
-                sx={{ 
+
+              <Typography
+                variant="body1"
+                sx={{
                   lineHeight: 1.7,
                   whiteSpace: "pre-line",
-                  animation: "fadeIn 1s ease-in"
+                  animation: "fadeIn 1s ease-in",
                 }}
               >
                 {feedback}
@@ -658,61 +688,74 @@ const Results = () => {
 
         {/* Questions Review Section */}
         <Box sx={{ p: { xs: 2, md: 4 } }}>
-          <Box 
-            sx={{ 
-              display: "flex", 
+          <Box
+            sx={{
+              display: "flex",
               alignItems: "center",
-              mb: 3
+              mb: 3,
             }}
           >
-            <HelpOutlineIcon sx={{ fontSize: 28, color: theme.palette.primary.main, mr: 1.5 }} />
-            <Typography variant="h5" sx={{ fontWeight: "600", color: theme.palette.primary.main }}>
+            <HelpOutlineIcon
+              sx={{ fontSize: 28, color: theme.palette.primary.main, mr: 1.5 }}
+            />
+            <Typography
+              variant="h5"
+              sx={{ fontWeight: "600", color: theme.palette.primary.main }}
+            >
               Question Review
             </Typography>
           </Box>
-          
+
           <Grid container spacing={3}>
             {questions.map((question, index) => {
-              const isCorrect = question.user_response?.replace("option_", "") === question.correct_answer;
+              const isCorrect =
+                question.user_response?.replace("option_", "") ===
+                question.correct_answer;
               const isSkipped = !question.user_response;
-              
+
               return (
                 <Grid item xs={12} key={index}>
-                  <Card 
-                    elevation={3} 
+                  <Card
+                    elevation={3}
                     sx={{
                       borderRadius: 2,
                       overflow: "hidden",
                       transition: "transform 0.3s, box-shadow 0.3s",
-                      "&:hover": { 
+                      "&:hover": {
                         transform: "translateY(-4px)",
-                        boxShadow: "0 12px 24px rgba(0,0,0,0.15)"
+                        boxShadow: "0 12px 24px rgba(0,0,0,0.15)",
                       },
                       border: `1px solid ${
-                        isCorrect 
-                          ? alpha("#4caf50", 0.3) 
-                          : isSkipped 
-                            ? alpha("#ff9800", 0.3)
-                            : alpha("#f44336", 0.3)
-                      }`
+                        isCorrect
+                          ? alpha("#4caf50", 0.3)
+                          : isSkipped
+                          ? alpha("#ff9800", 0.3)
+                          : alpha("#f44336", 0.3)
+                      }`,
                     }}
                   >
                     {/* Status Bar */}
-                    <Box 
-                      sx={{ 
-                        height: 8, 
-                        bgcolor: isCorrect 
-                          ? "#4caf50" 
-                          : isSkipped 
-                            ? "#ff9800"
-                            : "#f44336"
+                    <Box
+                      sx={{
+                        height: 8,
+                        bgcolor: isCorrect
+                          ? "#4caf50"
+                          : isSkipped
+                          ? "#ff9800"
+                          : "#f44336",
                       }}
                     />
-                    
+
                     <CardContent sx={{ p: 3 }}>
                       <Grid container spacing={2}>
                         <Grid item xs={12}>
-                          <Box sx={{ display: "flex", alignItems: "flex-start", mb: 2 }}>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "flex-start",
+                              mb: 2,
+                            }}
+                          >
                             <Box
                               sx={{
                                 minWidth: 40,
@@ -721,102 +764,133 @@ const Results = () => {
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
-                                backgroundColor: alpha(theme.palette.primary.main, 0.1),
+                                backgroundColor: alpha(
+                                  theme.palette.primary.main,
+                                  0.1
+                                ),
                                 color: theme.palette.primary.main,
                                 fontWeight: "bold",
                                 fontSize: "1.25rem",
                                 mr: 2,
-                                mt: 0.5
+                                mt: 0.5,
                               }}
                             >
                               {index + 1}
                             </Box>
-                            <Typography 
-                              variant="h6" 
-                              sx={{ 
+                            <Typography
+                              variant="h6"
+                              sx={{
                                 fontWeight: "600",
                                 color: "text.primary",
-                                lineHeight: 1.4
+                                lineHeight: 1.4,
                               }}
                             >
                               {question.question}
                             </Typography>
                           </Box>
-                          
-                          <Box 
+
+                          <Box
                             sx={{
                               display: "flex",
                               flexWrap: "wrap",
                               gap: 1,
                               mb: 3,
-                              ml: 7
+                              ml: 7,
                             }}
                           >
                             {question.categories.map((category, i) => (
-                              <Chip 
-                                key={i} 
+                              <Chip
+                                key={i}
                                 label={category}
                                 size="small"
-                                sx={{ 
-                                  bgcolor: alpha(theme.palette.primary.main, 0.1),
-                                  color: theme.palette.primary.main
+                                sx={{
+                                  bgcolor: alpha(
+                                    theme.palette.primary.main,
+                                    0.1
+                                  ),
+                                  color: theme.palette.primary.main,
                                 }}
                               />
                             ))}
                           </Box>
                         </Grid>
-                        
+
                         <Grid item xs={12} md={8}>
                           <Box sx={{ ml: { xs: 0, sm: 7 } }}>
                             <RadioGroup value={question.user_response || ""}>
-                              {["option_a", "option_b", "option_c", "option_d"].map((option, i) => {
-                                const isUserChoice = question.user_response === option;
-                                const isCorrectAnswer = option.replace("option_", "") === question.correct_answer;
-                                
+                              {[
+                                "option_a",
+                                "option_b",
+                                "option_c",
+                                "option_d",
+                              ].map((option, i) => {
+                                const isUserChoice =
+                                  question.user_response === option;
+                                const isCorrectAnswer =
+                                  option.replace("option_", "") ===
+                                  question.correct_answer;
+
                                 let bgColor = "transparent";
                                 if (isCorrectAnswer) {
                                   bgColor = alpha("#4caf50", 0.1);
                                 } else if (isUserChoice && !isCorrectAnswer) {
                                   bgColor = alpha("#f44336", 0.1);
                                 }
-                                
+
                                 return (
                                   <FormControlLabel
                                     key={option}
                                     value={option}
                                     control={
-                                      <Radio 
-                                        disabled 
-                                        color={isCorrectAnswer ? "success" : isUserChoice ? "error" : "primary"}
+                                      <Radio
+                                        disabled
+                                        color={
+                                          isCorrectAnswer
+                                            ? "success"
+                                            : isUserChoice
+                                            ? "error"
+                                            : "primary"
+                                        }
                                         checked={isUserChoice}
                                       />
                                     }
                                     label={
-                                      <Box sx={{ display: "flex", alignItems: "center" }}>
-                                        <Typography 
+                                      <Box
+                                        sx={{
+                                          display: "flex",
+                                          alignItems: "center",
+                                        }}
+                                      >
+                                        <Typography
                                           variant="body1"
                                           sx={{
-                                            fontWeight: isCorrectAnswer || isUserChoice ? "bold" : "normal"
+                                            fontWeight:
+                                              isCorrectAnswer || isUserChoice
+                                                ? "bold"
+                                                : "normal",
                                           }}
                                         >
-                                          <Box component="span" sx={{ 
-                                            color: theme.palette.primary.main,
-                                            mr: 1,
-                                            fontWeight: "bold"
-                                          }}>
+                                          <Box
+                                            component="span"
+                                            sx={{
+                                              color: theme.palette.primary.main,
+                                              mr: 1,
+                                              fontWeight: "bold",
+                                            }}
+                                          >
                                             {String.fromCharCode(65 + i)}:
                                           </Box>
                                           {question[option]}
                                         </Typography>
                                         {isCorrectAnswer && (
-                                          <CheckCircleIcon 
-                                            fontSize="small" 
+                                          <CheckCircleIcon
+                                            fontSize="small"
                                             sx={{ ml: 1, color: "#4caf50" }}
                                           />
                                         )}
                                         {isUserChoice && !isCorrectAnswer && (
-                                          <CancelIcon 
-                                            fontSize="small" 
+                                          <CancelIcon
+                                            fontSize="small"
                                             sx={{ ml: 1, color: "#f44336" }}
                                           />
                                         )}
@@ -833,8 +907,8 @@ const Results = () => {
                                         isCorrectAnswer
                                           ? alpha("#4caf50", 0.3)
                                           : isUserChoice
-                                            ? alpha("#f44336", 0.3)
-                                            : alpha(theme.palette.divider, 0.5)
+                                          ? alpha("#f44336", 0.3)
+                                          : alpha(theme.palette.divider, 0.5)
                                       }`,
                                     }}
                                   />
@@ -843,91 +917,118 @@ const Results = () => {
                             </RadioGroup>
                           </Box>
                         </Grid>
-                        
+
                         <Grid item xs={12} md={4}>
-                          <Box 
-                            sx={{ 
+                          <Box
+                            sx={{
                               p: 2,
                               borderRadius: 2,
                               height: "100%",
-                              backgroundColor: alpha(theme.palette.background.paper, 0.6),
-                              border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
+                              backgroundColor: alpha(
+                                theme.palette.background.paper,
+                                0.6
+                              ),
+                              border: `1px solid ${alpha(
+                                theme.palette.divider,
+                                0.5
+                              )}`,
                             }}
                           >
                             <Box sx={{ mb: 2 }}>
-                              <Typography variant="subtitle2" color="text.secondary">
+                              <Typography
+                                variant="subtitle2"
+                                color="text.secondary"
+                              >
                                 Your Answer:
                               </Typography>
-                              <Typography 
-                                variant="body1" 
-                                sx={{ 
+                              <Typography
+                                variant="body1"
+                                sx={{
                                   fontWeight: "bold",
-                                  color: isCorrect 
-                                    ? "#4caf50" 
-                                    : isSkipped 
-                                      ? "#ff9800"
-                                      : "#f44336"
+                                  color: isCorrect
+                                    ? "#4caf50"
+                                    : isSkipped
+                                    ? "#ff9800"
+                                    : "#f44336",
                                 }}
                               >
-                                {isSkipped ? (
-                                  "Not answered"
-                                ) : (
-                                  formatOptionLabel(question.user_response)
+                                {isSkipped
+                                  ? "Not answered"
+                                  : formatOptionLabel(question.user_response)}
+                              </Typography>
+                            </Box>
+
+                            <Box sx={{ mb: 2 }}>
+                              <Typography
+                                variant="subtitle2"
+                                color="text.secondary"
+                              >
+                                Correct Answer:
+                              </Typography>
+                              <Typography
+                                variant="body1"
+                                sx={{
+                                  fontWeight: "bold",
+                                  color: "#4caf50",
+                                }}
+                              >
+                                {formatOptionLabel(
+                                  "option_" + question.correct_answer
                                 )}
                               </Typography>
                             </Box>
-                            
-                            <Box sx={{ mb: 2 }}>
-                              <Typography variant="subtitle2" color="text.secondary">
-                                Correct Answer:
-                              </Typography>
-                              <Typography 
-                                variant="body1" 
-                                sx={{ 
-                                  fontWeight: "bold",
-                                  color: "#4caf50"
-                                }}
-                              >
-                                {formatOptionLabel("option_" + question.correct_answer)}
-                              </Typography>
-                            </Box>
-                            
+
                             <Box>
-                              <Typography variant="subtitle2" color="text.secondary">
+                              <Typography
+                                variant="subtitle2"
+                                color="text.secondary"
+                              >
                                 Status:
                               </Typography>
-                              <Chip 
-                                label={isCorrect ? "Correct" : isSkipped ? "Skipped" : "Incorrect"}
+                              <Chip
+                                label={
+                                  isCorrect
+                                    ? "Correct"
+                                    : isSkipped
+                                    ? "Skipped"
+                                    : "Incorrect"
+                                }
                                 size="small"
-                                sx={{ 
-                                  bgcolor: isCorrect 
-                                    ? alpha("#4caf50", 0.1) 
-                                    : isSkipped 
-                                      ? alpha("#ff9800", 0.1)
-                                      : alpha("#f44336", 0.1),
-                                  color: isCorrect 
-                                    ? "#4caf50" 
-                                    : isSkipped 
-                                      ? "#ff9800"
-                                      : "#f44336",
-                                  fontWeight: "bold"
+                                sx={{
+                                  bgcolor: isCorrect
+                                    ? alpha("#4caf50", 0.1)
+                                    : isSkipped
+                                    ? alpha("#ff9800", 0.1)
+                                    : alpha("#f44336", 0.1),
+                                  color: isCorrect
+                                    ? "#4caf50"
+                                    : isSkipped
+                                    ? "#ff9800"
+                                    : "#f44336",
+                                  fontWeight: "bold",
                                 }}
                               />
                             </Box>
                           </Box>
                         </Grid>
-                        
+
                         <Grid item xs={12}>
                           <Divider sx={{ my: 2 }} />
-                          
+
                           <Box sx={{ ml: { xs: 0, sm: 7 } }}>
-                            <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: 1 }}>
+                            <Typography
+                              variant="subtitle1"
+                              sx={{ fontWeight: "bold", mb: 1 }}
+                            >
                               Explanation:
                             </Typography>
-                            <Typography variant="body2" sx={{ color: "text.secondary", mb: 3 }}>
+                            <Typography
+                              variant="body2"
+                              sx={{ color: "text.secondary", mb: 3 }}
+                            >
                               {question.explanation}
                             </Typography>
-                            
+
                             <Button
                               variant="outlined"
                               color="secondary"
@@ -941,8 +1042,8 @@ const Results = () => {
                                 transition: "all 0.3s",
                                 "&:hover": {
                                   transform: "translateY(-2px)",
-                                  boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
-                                }
+                                  boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                                },
                               }}
                             >
                               Generate Prediction
@@ -958,20 +1059,21 @@ const Results = () => {
           </Grid>
         </Box>
       </Paper>
-      
+
       {/* Prediction Modal */}
       <Modal
         open={showModal}
         onClose={() => setShowModal(false)}
         closeAfterTransition
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <Zoom in={showModal}>
           <Box
             sx={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
               width: { xs: "90%", sm: "80%", md: "70%" },
               maxHeight: "90vh",
               overflow: "auto",
@@ -980,39 +1082,55 @@ const Results = () => {
               boxShadow: 24,
               p: { xs: 3, sm: 4 },
               outline: "none",
+              position: "relative", // Changed from absolute
+              maxWidth: "800px", // Added max width to prevent extreme widths
+              m: 2, // Added margin for safety
             }}
           >
             <IconButton
-              sx={{ 
-                position: "absolute", 
-                top: 8, 
+              sx={{
+                position: "absolute",
+                top: 8,
                 right: 8,
                 bgcolor: alpha(theme.palette.grey[200], 0.5),
                 "&:hover": {
                   bgcolor: alpha(theme.palette.grey[300], 0.5),
-                }
+                },
               }}
               onClick={() => setShowModal(false)}
             >
               <CloseIcon />
             </IconButton>
-            
-            <Typography 
-              variant="h5" 
-              sx={{ 
-                fontWeight: "bold", 
+
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: "bold",
                 mb: 3,
                 color: theme.palette.primary.main,
                 pb: 1,
-                borderBottom: `2px solid ${alpha(theme.palette.primary.main, 0.2)}`
+                borderBottom: `2px solid ${alpha(
+                  theme.palette.primary.main,
+                  0.2
+                )}`,
               }}
             >
               Learning Prediction
             </Typography>
-            
+
             {currentQuestionForPrediction && (
-              <Box sx={{ mb: 3, p: 2, bgcolor: alpha(theme.palette.background.paper, 0.5), borderRadius: 2 }}>
-                <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: 1 }}>
+              <Box
+                sx={{
+                  mb: 3,
+                  p: 2,
+                  bgcolor: alpha(theme.palette.background.paper, 0.5),
+                  borderRadius: 2,
+                }}
+              >
+                <Typography
+                  variant="subtitle1"
+                  sx={{ fontWeight: "bold", mb: 1 }}
+                >
                   Based on Question:
                 </Typography>
                 <Typography variant="body2">
@@ -1020,7 +1138,7 @@ const Results = () => {
                 </Typography>
               </Box>
             )}
-            
+
             {loadingPrediction ? (
               <Box
                 sx={{
@@ -1032,20 +1150,26 @@ const Results = () => {
                 }}
               >
                 <CircularProgress size={60} thickness={5} sx={{ mb: 2 }} />
-                <Typography variant="h6" sx={{ textAlign: "center", color: "text.secondary" }}>
+                <Typography
+                  variant="h6"
+                  sx={{ textAlign: "center", color: "text.secondary" }}
+                >
                   Generating your personalized prediction...
                 </Typography>
-                <Typography variant="body2" sx={{ textAlign: "center", color: "text.secondary", mt: 1 }}>
+                <Typography
+                  variant="body2"
+                  sx={{ textAlign: "center", color: "text.secondary", mt: 1 }}
+                >
                   Analyzing your performance patterns and learning profile
                 </Typography>
               </Box>
             ) : (
               <Box sx={{ animation: "fadeIn 0.5s ease-out" }}>
-                <Typography 
-                  variant="body1" 
-                  sx={{ 
+                <Typography
+                  variant="body1"
+                  sx={{
                     lineHeight: 1.8,
-                    whiteSpace: "pre-line" 
+                    whiteSpace: "pre-line",
                   }}
                 >
                   {prediction}
@@ -1055,7 +1179,7 @@ const Results = () => {
           </Box>
         </Zoom>
       </Modal>
-      
+
       {/* Scroll to Top Button */}
       <Zoom in={scrollToTop}>
         <Box
@@ -1085,18 +1209,31 @@ const Results = () => {
           <ArrowUpwardIcon />
         </Box>
       </Zoom>
-      
+
       {/* Add CSS for animations */}
       <style jsx>{`
         @keyframes pulse {
-          0% { transform: scale(1); opacity: 0.8; }
-          50% { transform: scale(1.05); opacity: 0.4; }
-          100% { transform: scale(1); opacity: 0.8; }
+          0% {
+            transform: scale(1);
+            opacity: 0.8;
+          }
+          50% {
+            transform: scale(1.05);
+            opacity: 0.4;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 0.8;
+          }
         }
-        
+
         @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
       `}</style>
     </Container>
